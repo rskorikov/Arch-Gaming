@@ -40,7 +40,7 @@ xinput set-prop "deviceid" "libinput Accel Profile Enabled" 0 1 0
 ```
 4. Confirm the changes:
 ```
-'xinput list-props "deviceid"'
+xinput list-props "deviceid"
 ```
 5. Make it persistent by adding the option to the pointer section:
 edit file: '/etc/X11/xorg.conf.d/40-libinput.conf' and add the block:
@@ -55,7 +55,8 @@ edit file: '/etc/X11/xorg.conf.d/40-libinput.conf' and add the block:
 ```
 **Install MangoHud and Goverlay for viewing performance stats**
 * Install MangoHud:
-```sudo pacman -S mangohud lib32-mangohud
+```
+sudo pacman -S mangohud lib32-mangohud
 ```
 *To enable mangohud set the environment variable: MANGOHUD=1 or just mangohud*
 * Install Goverlay (GUI to configure MangoHud look & feel):
@@ -118,8 +119,14 @@ sudo mv gamemode.ini /usr/share/gamemode/
 ```
 systemctl --user enable --now gamemoded.service
 ```
-* Test gamemode: gamemoded -t
-## Have a good gaming
-
+* Test gamemode:
+```
+gamemoded -t
+```
 * To actually use gamemode in Steam add the line to game launch options:
-gamemoderun %command% which can be combined with anothe launch options (mangohud)
+```
+gamemoderun %command%
+```
+which can be combined with another launch options (mangohud)
+
+#### Have a good gaming!
