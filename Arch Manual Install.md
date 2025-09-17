@@ -91,10 +91,9 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 hwclock --systohc
 ```
-
-- Generate and enable system locale:
+4. Generate and enable system locale:
   
-Using text editor open the file
+Using text editor open the file **locale.gen**
 ```
 nano /etc/locale.gen
 ```
@@ -110,6 +109,22 @@ to generate the locale.
 Then add the generated locale to /etc/locale.conf file.
 ```
 echo 'LANG=ru_RU.UTF-8' >> /etc/locale.conf
+```
+5. Give your system a hostname:
+```
+echo 'arch-btw' >> /etc/hostname
+```
+6. Edit hosts file
+```
+nano etc/hosts
+```
+Add the line at the end of the file
+```
+127.0.0.1   arch-btw.localdomain  arch-btw
+```
+7. Create password for your root
+```
+passwd
 ```
 
 
