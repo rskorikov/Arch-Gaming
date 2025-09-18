@@ -117,22 +117,54 @@ echo 'arch-btw' >> /etc/hostname
 6. Edit hosts file
 ```
 nano etc/hosts
-```
-Add the line at the end of the file
-```
+# add the line at the end of the file
 127.0.0.1   arch-btw.localdomain  arch-btw
 ```
 7. Create password for your root
 ```
 passwd
 ```
-
-
-
-
-
-
-
+8. Create user and add to wheel group:
+```
+useradd -mG wheel rs
+```
+then add your created user to sudoers
+```
+EDITOR=nano visudo
+# uncomment th line
+%wheel ALL (ALL) ALL
+```
+9. Install necessary packages
+```
+pacman -S efibootmgr networkmanager network-manager-applet wireless_tools wpa_supplicant dialog os-prober mtools dosfstools base-devel linux-headers
+```
+### Install and configure boot loader (systemd-boot):
+```
+bootctl --path=/boot install
+cd /boot
+ls
+cd /loader
+```
+Edit file loader.conf
+```
+nano loader.conf
+default arch -*
+```
+go to the entries directory
+```
+cd /entries
+```
+and create the new entry:
+```
+nano arch.conf
+```
+add the lines to arch.conf
+```
+title  Arch Linux
+linux  /vmlinuz-linux
+initrd  /initramfs-linux.img
+options  root=/dev/sda2 rw # set path to root partition
+```
 
 
 
